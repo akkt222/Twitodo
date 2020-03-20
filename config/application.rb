@@ -31,5 +31,7 @@ module Twitodo
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+    config.middleware.insert_after(ActiveRecord::Migration::CheckPending, ActionDispatch::Cookies)
+    config.middleware.insert_after(ActionDispatch::Cookies, ActionDispatch::Session::CookieStore)
   end
 end

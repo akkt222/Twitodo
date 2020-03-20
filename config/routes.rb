@@ -1,3 +1,5 @@
 Rails.application.routes.draw do
-  root to: "twitodo#index"
+  root 'twitodo#index'
+  get '/auth/:provider/callback', to: 'sessions#create'
+  get '/logout', to: 'sessions#destroy'
 end
