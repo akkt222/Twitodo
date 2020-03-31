@@ -1,0 +1,29 @@
+create_table "users" do |t|
+  t.string :uid
+  t.string :nickname
+  t.string :name
+  t.string :image
+
+  t.timestamps
+end
+
+create_table "tweets" do |t|
+
+  t.timestamps
+end
+
+create_table "groups" do |t|
+  t.string :group_name
+  t.string :hashtag
+  t.timestamps
+end
+
+create_table "members" do |t|
+  t.references :group, foreign_key: true
+  t.references :user, froreign_key: :true
+  t.timestamps
+end
+
+
+
+
