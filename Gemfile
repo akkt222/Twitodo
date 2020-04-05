@@ -54,4 +54,6 @@ gem 'omniauth-twitter'
 gem 'dotenv-rails'
 gem "haml-rails", "~> 2.0"
 gem "erb2haml"
+gem "twitter"
 gem "ridgepole"
+gem "faraday"
