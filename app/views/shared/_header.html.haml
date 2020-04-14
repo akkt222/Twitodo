@@ -1,5 +1,31 @@
-- if logged_in?
-  = link_to "Logout", logout_path, class: "ログアウト"
-- else
-  %a{href: "/auth/twitter"} ログイン
-  
+%ul#dropdown1.dropdown-content
+  %li
+    %a{href: "#!"}  ユーザー情報の確認
+  %li.divider
+  %li
+    %a{href: "#!"} 退会
+%nav
+  .nav-wrapper
+    %a.brand-logo{href: "#!"}
+      =link_to "Twitodo", root_path
+    - if logged_in?
+      %ul.right.hide-on-med-and-down
+        %li
+          %a
+            =link_to "リストの作成", root_path
+        %li
+          %a
+            =link_to "リストの一覧", root_path
+        %li
+          %a
+            = link_to "ログアウト", logout_path, class: "ログアウト"
+          -# - else
+          -#   %a{href: "/auth/twitter"} ログイン
+        %li
+          %a.dropdown-trigger{"data-target" => "dropdown1", href: "#!"}
+            メニュー
+            -# %i.material-icons.right arrow_drop_down
+    - else
+      %ul.right.hide-on-med-and-down
+        %li
+          %a{href: "/auth/twitter"} ログイン
