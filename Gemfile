@@ -57,3 +57,6 @@ gem "erb2haml"
 gem "twitter"
 gem "ridgepole"
 gem "faraday"
+gem 'materialize-sass', '~> 1.0.0'
+gem 'jquery-rails' 
+gem 'jquery-turbolinks'
