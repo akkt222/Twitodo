@@ -1,0 +1,56 @@
+= render 'shared/header'
+= form_with model: @group, local: true do |form|
+
+  .form-container
+    %form.col.s12
+      .row
+        .input-field.col.s12
+          = form.text_field :group_name, class:"materialize-textarea", placeholder: "リストの名前", maxlength: "20"
+          -# %textarea#textarea1.materialize-textarea{"data-length" => "120"}
+          %label{for: "textarea1"} リストの名前
+      .row
+        .input-field.col.s12
+          = form.text_field :hashtag, class:"materialize-textarea", placeholder: "ハッシュタグ", maxlength: "20"
+          -# %textarea#textarea1.materialize-textarea
+          %label{for: "textarea1"} ハッシュタグ
+    .divider
+    .user-form-container
+      %form.col.s12
+        .row
+          .input-field.col.s12
+            = form.text_field :user_id, class:"materialize-textarea", placeholder: "ユーザー(TwitterのID)", maxlength: "20"
+            -# %textarea#textarea1.materialize-textarea
+            %label{for: "textarea1"} ユーザー(TwitterのID)
+
+          .input-field.col.s12
+            = form.text_field :user_id, class:"materialize-textarea", placeholder: "ユーザー(TwitterのID)", maxlength: "20"
+            -# %textarea#textarea1.materialize-textarea
+            %label{for: "textarea1"} ユーザー(TwitterのID)
+
+          .input-field.col.s12
+            = form.text_field :user_id, class:"materialize-textarea", placeholder: "ユーザー(TwitterのID)", maxlength: "20"
+            -# %textarea#textarea1.materialize-textarea
+            %label{for: "textarea1"} ユーザー(TwitterのID)
+
+          .input-field.col.s12
+            = form.text_field :user_id, class:"materialize-textarea", placeholder: "ユーザー(TwitterのID)", maxlength: "20"
+            -# %textarea#textarea1.materialize-textarea
+            %label{for: "textarea1"} ユーザー(TwitterのID)
+
+          = form.hidden_field :user_id, :value => current_user.uid
+
+          = form.collection_check_boxes :user_ids, User.all, :id, :name, class: "filled-in"
+    .divider
+
+    .button-container
+      -# = f.su :hashtag, class:"waves-effect.waves-light.btn-large"
+      %button.waves-effect.waves-light.btn-large
+        = form.submit "Submit"
+      -#   Submit
+    -#   -# , "Submit", class:"waves-effect.waves-light.btn-large.submit"
+      -# = f.submit
+
+    -# %button.btn.waves-effect.waves-light{name: "action", type: "submit"}
+    -#   Submit
+    -#   %i.material-icons.right send
+  = form.hidden_field 'group[user_ids][]', value: current_user.id
