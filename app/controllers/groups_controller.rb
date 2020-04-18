@@ -1,19 +1,24 @@
 class GroupsController < ApplicationController
-  
+
   def index
   end
 
   def new
     @group = Group.new
-    @group.users << current_user
   end
 
   def create
-    @group = Group.new(group_params)
-    if @group.save
-      redirect_to root_path, notice: 'グループを作成しました'
-    else
-      render :new
+    # @group = Group.new(group_params)
+    # if @group.save
+    #   redirect_to root_path, notice: 'グループを作成しました'
+    # else
+    #   render :new
+    # end
+    binding.pry
+    group = Group.create!(group_params)
+    group.user_ids.each do |user_id|
+      user = User.find_by(user_id: user_id)
+      group.members.create!(user: user)
     end
   end
 
@@ -35,9 +40,9 @@ class GroupsController < ApplicationController
   end
 
   private
-  
+
   def group_params
-    params.require(:group).permit(:name, user_ids: [])
+    params.require(:group).permit(:group_name, :hashtag, user_ids: [])
   end
 
   def set_group
