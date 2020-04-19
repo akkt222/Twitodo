@@ -6,21 +6,38 @@ class GroupsController < ApplicationController
 
   def new
     @group = Group.new
+    @group.members.build
   end
 
   def create
+    @group = Group.new(group_params)
+    if @group.save
+      redirect_to :index, notice: 'リストを作成しました'
+    else
+      render :new
+    end
     # @group = Group.new(group_params)
     # if @group.save
     #   redirect_to root_path, notice: 'グループを作成しました'
     # else
     #   render :new
     # end
-    binding.pry
-    group = Group.create!(group_params)
-    group.user_ids.each do |user_id|
-      user = User.find_by(user_id: user_id)
-      group.members.create!(user: user)
-    end
+    # group = Group.create!(group_params)
+    # group.user_ids.each do |user_id|
+    #   user = User.find_by(user_id: user_id)
+    #   group.members.create!(user: user)
+
+    # @group = Group.new(group_params)
+
+    # if @group.save
+    #   binding.pry
+    # group = Group.create!(group_params)
+    # group.user_ids.each do |user_id|
+    #   user = User.find_by(user_id: user_id)
+    #   group.members.create!(user: user)
+
+    # render :index
+    # end
   end
 
   def edit
@@ -43,10 +60,11 @@ class GroupsController < ApplicationController
   private
 
   def group_params
-    params.require(:group).permit(:group_name, :hashtag, user_ids: [])
+    params.require(:group, ).permit(:group_name, :hashtag, user_ids: [])
   end
+  user
 
-  def set_group
-    @group = Group.find(params[:id])
-  end
+  # def set_group
+  #   @group = Group.find(params[:id])
+  # end
 end
