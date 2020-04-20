@@ -1,9 +1,6 @@
 = render 'shared/header'
 .group-container
-  - @group.each do |g|
-    -# - if current_user.name != user.name
-    -# .row
-    -# .col.s12.m6
+  - current_user.groups.each do |g|
     .group-box
       .col.s12.m7
         .card.horizontal
@@ -12,10 +9,11 @@
               %p
                 = g.group_name
             .card-action
-              %a{href: "#"} リストを見る
-              %a{href: "#"} リストを編集・削除する
-
-
+              %a
+                = link_to "リストを見る", edit_group_path(g) 
+              %a
+                -# = link_to "リストを編集・削除する", "/groups/#{g.id}/edit" do
+                = link_to "リストを編集・削除する", group_path(g)
   
     -# .chat-group-user.clearfix.js-chat-member
     -#   %input{name: "group[user_ids][]", type: "hidden", value: user.id}
