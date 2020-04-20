@@ -6,8 +6,11 @@
         .card.horizontal
           .card-stacked
             .card-content
+              %label リストの名前/ハッシュタグ
               %p
                 = g.group_name
+              %p
+                = g.hashtag
             .card-action
               %a
                 = link_to "リストを見る", edit_group_path(g) 
