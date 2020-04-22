@@ -41,6 +41,7 @@ class GroupsController < ApplicationController
   end
 
   def show
+    @tweet = Tweet.pluck(:tweet_id)
   end
 
   def edit
