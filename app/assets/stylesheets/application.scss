@@ -70,3 +70,29 @@ $primary-color: #27beac;
     display: inline-block;
     padding: 1%;
   }
+
+// .tweet-container{
+//   width: 40%;
+//   padding: 1%;
+// //   // padding-top: 10%;
+// //   // padding-bottom: 10%;
+// //   // padding: 10%;
+// }
+
+// .tweet-box{
+//   width: 100%;
+//   text-align: center;
+//   margin: 0 auto;
+// }
+
+.tweet-container{
+  margin-top: 1%;
+  text-align: center;
+  &__box{
+    width: 40%;
+    margin: 0 auto;
+    margin-top: 1%;
+    &__tweet{
+    }
+  }
+}

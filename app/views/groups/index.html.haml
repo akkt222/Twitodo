@@ -13,10 +13,10 @@
                 = g.hashtag
             .card-action
               %a
-                = link_to "リストを見る", edit_group_path(g) 
+                = link_to "リストを見る", group_path(g)
               %a
                 -# = link_to "リストを編集・削除する", "/groups/#{g.id}/edit" do
-                = link_to "リストを編集・削除する", group_path(g)
+                = link_to "リストを編集・削除する", edit_group_path(g) 
   
     -# .chat-group-user.clearfix.js-chat-member
     -#   %input{name: "group[user_ids][]", type: "hidden", value: user.id}

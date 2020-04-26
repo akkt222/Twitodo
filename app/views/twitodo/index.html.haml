@@ -1,12 +1,12 @@
 = render 'shared/header'
 
 .container-index
-  #demo-carousel-content.carousel.carousel-slider{"data-indicators" => "true"}
+  #demo-carousel-content.carousel.carousel-slider{"data-indicators" => "true" }
     %a.carousel-item{href: "#one!"}
       %img{src: "https://live.staticflickr.com/65535/49165881072_340c574c13_o.png"}/
     .carousel-fixed-item.center
       %h2.white-text TextTextText
-      %a.btn.waves-effect.orange.lighten-3.black-text.darken-text-2 Login with Twitter
+      %a.btn.waves-effect.orange.lighten-3.black-text.darken-text-2{href: "/auth/twitter"} Login with Twitter
     %a.carousel-item{href: "#two!"}
       %img{src: "https://live.staticflickr.com/65535/49165881072_340c574c13_o.png"}/
     %a.carousel-item{href: "#two!"}
@@ -24,3 +24,4 @@
     });
 
 = render 'shared/footer'
+

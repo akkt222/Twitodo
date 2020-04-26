@@ -9,6 +9,7 @@ end
 
 create_table "tweets" do |t|
   t.string :tweet_id
+  t.integer :status
   t.timestamps
 end
 

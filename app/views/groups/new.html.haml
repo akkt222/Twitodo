@@ -21,9 +21,9 @@
     .row
       .input-field.col.s12
         = form.hidden_field "user_ids[]", name: "group[user_ids][]", value: current_user.id
-        -# = form.text_field "user_ids[]", name: "user_ids[]", class:"materialize-textarea", placeholder: "ユーザー(TwitterのID)", maxlength: "20"
-        -# %textarea#textarea1.materialize-textarea
-        -# %label{for: "textarea1"} ユーザー(TwitterのID)
+        = form.text_field "user_ids[]", name: "user_ids[]", class:"materialize-textarea", placeholder: "ユーザー(TwitterのID)", maxlength: "20"
+        %a.btn-floating.btn-small.waves-effect.waves-light.grey ＋
+        %label{for: "textarea1"} ユーザー(TwitterのID)
 
     -#     = form.hidden_field "user_ids[]", name: "user_ids[]", value: current_user.nickname
     -#     = form.text_field "user_ids[]", name: "user_ids[]", class:"materialize-textarea", placeholder: "ユーザー(TwitterのID)", maxlength: "20"

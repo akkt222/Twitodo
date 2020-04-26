@@ -1,4 +1,5 @@
 class GroupsController < ApplicationController
+  before_action :set_group, only: [:show]
 
   def index
     @group = Group.all
@@ -41,7 +42,11 @@ class GroupsController < ApplicationController
   end
 
   def show
-    @tweet = Tweet.pluck(:tweet_id)
+    @tweet = Tweet.all
+    @new = Tweet.where(status: "1")
+    @wip = Tweet.where(status: "2")
+    @pending = Tweet.where(status: "3")
+    @completed = Tweet.where(status: "4")
   end
 
   def edit
@@ -64,11 +69,11 @@ class GroupsController < ApplicationController
   private
 
   def group_params
-    params.require(:group, ).permit(:group_name, :hashtag, user_ids: [])
+    params.require(:group).permit(:group_name, :hashtag, user_ids: [])
   end
-  user
 
-  # def set_group
-  #   @group = Group.find(params[:id])
-  # end
+  def set_group
+    @group = Group.find(params[:id])
+  end
+
 end
