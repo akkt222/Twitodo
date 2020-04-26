@@ -19,11 +19,11 @@
       -# = form.text_field :user_ids, class:"materialize-textarea", placeholder: "ユーザー(TwitterのID)", maxlength: "20"
       -# = form.text_field :user_ids, class:"materialize-textarea", placeholder: "ユーザー(TwitterのID)", maxlength: "20"
     .row
-      .input-field.col.s12
+      #image.input-field.col.s12.user-add-form
         = form.hidden_field "user_ids[]", name: "group[user_ids][]", value: current_user.id
-        = form.text_field "user_ids[]", name: "user_ids[]", class:"materialize-textarea", placeholder: "ユーザー(TwitterのID)", maxlength: "20"
-        %a.btn-floating.btn-small.waves-effect.waves-light.grey ＋
+        = form.text_field "user_ids[]", name: "group[user_ids][]", class:"materialize-textarea", placeholder: "ユーザー(TwitterのID)", maxlength: "20"
         %label{for: "textarea1"} ユーザー(TwitterのID)
+      %a.btn-floating.btn-small.waves-effect.waves-light.grey.user-add-btn ＋
 
     -#     = form.hidden_field "user_ids[]", name: "user_ids[]", value: current_user.nickname
     -#     = form.text_field "user_ids[]", name: "user_ids[]", class:"materialize-textarea", placeholder: "ユーザー(TwitterのID)", maxlength: "20"
@@ -62,3 +62,13 @@
     -#   Submit
     -#   %i.material-icons.right send
 
+:javascript
+  $(window).on('load', ()=> {
+    const html = `
+      <input name="group[user_ids][]" class="materialize-textarea" placeholder="ユーザー(TwitterのID)" maxlength="20" size="20" type="text" id="group_user_ids[]">
+    `;
+    $('.user-add-btn').on('click', function(e) {
+      $('.user-add-form').append(html);
+    });
+
+  });
