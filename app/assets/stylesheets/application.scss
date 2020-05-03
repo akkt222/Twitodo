@@ -15,15 +15,20 @@
  */
 @import "materialize";
 @import "https://fonts.googleapis.com/icon?family=Material+Icons";
-// $primary-color: color("yellow", "lighten-2") !default;
-$primary-color: #27beac;
+@import "materialize/components/color-variables";
+$primary-color: color("blue", "lighten-2") !default;
+$secondary-color: color("yellow", "base") !default;
+@import 'materialize';
 
 .container-index{
   margin: 0 auto;
-  width: 90%;
-  margin-top: 4.2%;
-  margin-bottom: 5%;
-  height: 40%;
+  width: 70%;
+  margin-top: 1%;
+  margin-bottom: 1%;
+  height: 10%;
+  &__box{
+    height: 500px;
+  }
 }
 
 .page-footer{
