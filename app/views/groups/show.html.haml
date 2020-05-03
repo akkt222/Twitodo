@@ -16,9 +16,9 @@
           %br
           Hashtag:
           = @group.hashtag
-      %li.col.s2{style: "color: #ee6e73; padding-top: 0.5%;"}
+      %li.col.s2{style: "color: #ee6e73; padding-top: 0.5%; font-size: 16px;"}
         %i.material-icons{style: "padding-top: 1%"} autorenew
-        = link_to "Load new tweets", root_path, style: "color: #ee6e73;"
+        = link_to 'Load new tweets', tweets_path(@group), method: :put , style: "color: #ee6e73;"
       %li.tab.col.s2{style: " border-left: 1px dotted #bbb;"}
         %a{href:"#test1"} New
       %li.tab.col.s2
