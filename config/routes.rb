@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get '/auth/:provider/callback', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy'
   resources :groups
-  resources :tweets
+  get '/tweets', to: 'tweets#update'
+  # resources :tweets, only: [:update]
   get "/tweets/search" => 'tweets#search'
 end
