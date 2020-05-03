@@ -1,6 +1,6 @@
 %ul#dropdown1.dropdown-content
   %li
-    %a{href: "#!"}  ユーザー情報の確認
+    %a{href: "#!"}  ユーザー情報
   %li.divider
   %li
     %a{href: "#!"} 退会
@@ -12,10 +12,10 @@
       %ul.right.hide-on-med-and-down
         %li
           %a
-            =link_to "リストの作成", root_path
+            =link_to "リストの作成", new_group_path
         %li
           %a
-            =link_to "リストの一覧", root_path
+            =link_to "リストの一覧", groups_path
         %li
           %a
             = link_to "ログアウト", logout_path, class: "ログアウト"
@@ -29,3 +29,8 @@
       %ul.right.hide-on-med-and-down
         %li
           %a{href: "/auth/twitter"} Twitterアカウントでログイン
+
+:javascript
+  $(document).ready(function(){
+    $('.dropdown-trigger').dropdown();
+  });

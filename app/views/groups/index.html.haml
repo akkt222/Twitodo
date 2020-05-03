@@ -1,0 +1,26 @@
+= render 'shared/header'
+.group-container
+  - current_user.groups.each do |g|
+    .group-box
+      .col.s12.m7
+        .card.horizontal
+          .card-stacked
+            .card-content
+              %label リストの名前/ハッシュタグ
+              %p
+                = g.group_name
+              %p
+                = g.hashtag
+            .card-action
+              %a
+                = link_to "リストを見る", group_path(g)
+              %a
+                -# = link_to "リストを編集・削除する", "/groups/#{g.id}/edit" do
+                = link_to "リストを編集・削除する", edit_group_path(g) 
+  
+    -# .chat-group-user.clearfix.js-chat-member
+    -#   %input{name: "group[user_ids][]", type: "hidden", value: user.id}
+    -#   %p.chat-group-user__name
+    -#     = user.name
+    -#   %a.user-search-remove.chat-group-user__btn.chat-group-user__btn--remove.js-remove-btn
+    -#     削除

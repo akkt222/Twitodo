@@ -1,0 +1,88 @@
+-# = javascript_pack_tag 'hello_vue'
+-# = javascript_pack_tag 'tweet_embed'
+= render 'shared/header'
+%link{href: "https://fonts.googleapis.com/icon?family=Material+Icons", rel: "stylesheet"}/
+
+.row
+  .col.s12
+    -# %ul
+    -#   %li.col.s1 aaa
+    -#   %li.col.s1 aaa
+    %ul.tabs{style: " border-bottom: 1px dotted #bbb;"}
+      %li
+        .col.s2{style: "color: #ee6e73;"}
+          Name:
+          = @group.group_name
+          %br
+          Hashtag:
+          = @group.hashtag
+      %li.col.s2{style: "color: #ee6e73; padding-top: 0.5%; font-size: 16px;"}
+        %i.material-icons{style: "padding-top: 1%"} autorenew
+        = link_to 'Load new tweets', tweets_path(@group), method: :put , style: "color: #ee6e73;"
+      %li.tab.col.s2{style: " border-left: 1px dotted #bbb;"}
+        %a{href:"#test1"} New
+      %li.tab.col.s2
+        %a.active{href: "#test2"} WIP
+      %li.tab.col.s2
+        %a{href: "#test3"} Pending
+      %li.tab.col.s2
+        %a{href: "#test4"} Completed
+  #test1.col.s12.tweet-container
+    - @new.each do |tweet|
+      .card.white.darken-1.tweet-container__box
+        .card-content.white-text.tweet-container__box__tweet
+          %blockquote.twitter-tweet
+            %a{href: "https://twitter.com/a/status/#{tweet.tweet_id}?ref_src=twsrc%5Etfw"}
+          %script{async: "", charset: "utf-8", src: "https://platform.twitter.com/widgets.js"}
+          .card-action{style: "color: black;"}
+            Move this card to:
+            %br
+            = link_to "WIP", root_path, class: "waves-effect.waves-light.btn-small.grey"
+            = link_to "Pending", root_path, class: "waves-effect.waves-light.btn-small.grey"
+            = link_to "Completed", root_path, class: "waves-effect.waves-light.btn-small.grey"
+
+  #test2.col.s12.tweet-container
+    - @wip.each do |tweet|
+      .card.white.darken-1.tweet-container__box
+        .card-content.white-text.tweet-container__box__tweet
+          %blockquote.twitter-tweet
+            %a{href: "https://twitter.com/a/status/#{tweet.tweet_id}?ref_src=twsrc%5Etfw"}
+          %script{async: "", charset: "utf-8", src: "https://platform.twitter.com/widgets.js"}
+          .card-action{style: "color: black;"}
+            Move this card to:
+            %br
+            -# = link_to "WIP", root_path, class: "waves-effect.waves-light.btn-small.grey"
+            = link_to "Pending", root_path, class: "waves-effect.waves-light.btn-small.grey"
+            = link_to "Completed", root_path, class: "waves-effect.waves-light.btn-small.grey"
+
+  #test3.col.s12.tweet-container
+    - @pending.each do |tweet|
+      .card.white.darken-1.tweet-container__box
+        .card-content.white-text.tweet-container__box__tweet
+          %blockquote.twitter-tweet
+            %a{href: "https://twitter.com/a/status/#{tweet.tweet_id}?ref_src=twsrc%5Etfw"}
+          %script{async: "", charset: "utf-8", src: "https://platform.twitter.com/widgets.js"}
+          .card-action{style: "color: black;"}
+            Move this card to:
+            %br
+            = link_to "WIP", root_path, class: "waves-effect.waves-light.btn-small.grey"
+            -# = link_to "Pending", root_path, class: "waves-effect.waves-light.btn-small.grey"
+            = link_to "Completed", root_path, class: "waves-effect.waves-light.btn-small.grey"
+  #test4.col.s12.tweet-container
+    - @completed.each do |tweet|
+      .card.white.darken-1.tweet-container__box
+        .card-content.white-text.tweet-container__box__tweet
+          %blockquote.twitter-tweet
+            %a{href: "https://twitter.com/a/status/#{tweet.tweet_id}?ref_src=twsrc%5Etfw"}
+          %script{async: "", charset: "utf-8", src: "https://platform.twitter.com/widgets.js"}
+          .card-action{style: "color: black;"}
+            Move this card to:
+            %br
+            -# = link_to "WIP", root_path, class: "waves-effect.waves-light.btn-small.grey"
+            -# = link_to "Pending", root_path, class: "waves-effect.waves-light.btn-small.grey"
+            -# = link_to "Completed", root_path, class: "waves-effect.waves-light.btn-small.grey"
+:javascript
+  $(document).ready(function(){
+    $('.tabs').tabs();
+  });
+
