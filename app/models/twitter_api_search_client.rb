@@ -13,8 +13,8 @@ class TwitterApiSearchClient
   #      "maxResults" => "10",
   #      "hashtag" => "#{hashtag}",
   #     }
-  def call(search_word:)
-    params =  {"query" => "#{search_word} lang:ja"}
+  def call(hashtag:, members:)
+    params =  {"query" => "#{hashtag} lang:ja"}
     uri = URI.parse(TWITTER_SEARCH_ENDPOINT)
 
     request = Net::HTTP::Post.new(uri)
@@ -30,8 +30,9 @@ class TwitterApiSearchClient
       http.request(request)
     end
 
-    JSON.parse(response.body)
-    return response.where()
-    results['results']['user'][id_str]
+    a = JSON.parse(response.body)
+    a.select { |result| members.include?(result["user"]["screen_name"]) }
+    # return response.where()
+    # results['results']['user'][id_str]
   end
 end
