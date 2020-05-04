@@ -8,13 +8,14 @@ class TwitterApiSearchClient
   TWITTER_SEARCH_ENDPOINT = "https://api.twitter.com/1.1/tweets/search/30day/prod.json"
   BEARER = ENV['BEARER']
 
-  # def call(hashtag:)
+  # def call(hashtag:, members:)
   #   params =  {
-  #      "maxResults" => "10",
+  #  "maxResults" => "10",
   #      "hashtag" => "#{hashtag}",
   #     }
-  def call(search_word:)
-    params =  {"query" => "#{search_word} lang:ja"}
+  def call(hashtag:)
+    params =  {"query" => "#{hashtag} lang:ja",
+    "maxResults" => "10",}
     uri = URI.parse(TWITTER_SEARCH_ENDPOINT)
 
     request = Net::HTTP::Post.new(uri)
@@ -31,7 +32,9 @@ class TwitterApiSearchClient
     end
 
     JSON.parse(response.body)
-    return response.where()
-    results['results']['user'][id_str]
+    # a = JSON.parse(response.body)
+    # a.select { |result| members.include?(result["results"]["user"]["screen_name"]) }
+    # return response.where()
+    # results['results']['user'][id_str]
   end
 end

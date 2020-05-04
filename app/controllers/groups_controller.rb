@@ -42,11 +42,12 @@ class GroupsController < ApplicationController
   end
 
   def show
+    group = Group.find(params[:id])
     @tweet = Tweet.all
-    @new = Tweet.where(status: "1")
-    @wip = Tweet.where(status: "2")
-    @pending = Tweet.where(status: "3")
-    @completed = Tweet.where(status: "4")
+    @new = Tweet.where(status: "1", group_identifier: group.id)
+    @wip = Tweet.where(status: "2", group_identifier: group.id)
+    @pending = Tweet.where(status: "3", group_identifier: group.id)
+    @completed = Tweet.where(status: "4", group_identifier: group.id)
   end
 
   def edit
@@ -64,6 +65,9 @@ class GroupsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def search
   end
 
   private

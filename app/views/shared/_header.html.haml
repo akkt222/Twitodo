@@ -3,7 +3,8 @@
     %a{href: "#!"}  ユーザー情報
   %li.divider
   %li
-    %a{href: "#!"} 退会
+    -# = link_to "退会", twitodo_path(current_user.id), data: { confirm: '削除しますか？' }
+    = link_to '退会', user_path, method: :delete, data: {confirm: '本当にいいんですか？'}
 %nav
   .nav-wrapper
     %a.brand-logo{href: "#!"}
