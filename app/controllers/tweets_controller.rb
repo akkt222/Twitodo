@@ -20,20 +20,15 @@ class TweetsController < ApplicationController
     hashtag = group.hashtag
 
     member = group.users.pluck(:nickname)
-    # .pluck(:nickname)
-
-    # user = User.find_by(id: current_user.id)
-    # @boards = user.following_boards
-    # @group = Group.find(params[:group_id])
-
     result = TwitterApiSearchClient.new
-    tweets = result.call(hashtag: "##{hashtag}", members: member)
+    tweets = result.call(hashtag: "##{hashtag}")
+    # tweets = result.call(hashtag: "##{hashtag}", members: member)
 
     tweets["results"].each do |tweet|
-      Tweet.find_or_create_by!(tweet_id: tweet["id_str"], status: "1")
+      Tweet.find_or_create_by!(tweet_id: tweet["id_str"], status: "1", group_identifier: group.id)
     end
 
-    redirect_to controller: 'groups', action: 'show', id: @group.id
+    redirect_to controller: 'groups', action: 'show', id: group.id
   end
 
 end
