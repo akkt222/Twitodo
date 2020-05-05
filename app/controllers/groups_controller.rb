@@ -1,5 +1,5 @@
 class GroupsController < ApplicationController
-  before_action :set_group, only: [:show]
+  before_action :set_group, only: [:show, :edit, :update]
 
   def index
     @group = Group.all
@@ -13,7 +13,7 @@ class GroupsController < ApplicationController
   def create
     @group = Group.new(group_params)
     if @group.save
-      redirect_to :index, notice: 'リストを作成しました'
+      render :index, notice: 'リストを作成しました'
     else
       render :new
     end
@@ -42,32 +42,28 @@ class GroupsController < ApplicationController
   end
 
   def show
-    group = Group.find(params[:id])
     @tweet = Tweet.all
-    @new = Tweet.where(status: "1", group_identifier: group.id)
-    @wip = Tweet.where(status: "2", group_identifier: group.id)
-    @pending = Tweet.where(status: "3", group_identifier: group.id)
-    @completed = Tweet.where(status: "4", group_identifier: group.id)
+    @new = Tweet.where(status: "1", group_identifier: @group.id)
+    @wip = Tweet.where(status: "2", group_identifier: @group.id)
+    @pending = Tweet.where(status: "3", group_identifier: @group.id)
+    @completed = Tweet.where(status: "4", group_identifier: @group.id)
   end
 
   def edit
-    # @group = Group.find(params[:id])
-    # if @group.update(name: params[:name], id: params[:id])
-    #   redirect_to :index, notice: 'グループを更新しました'
+    # if @group.update(group_name: params[:name], id: params[:id])
+    #   redirect_to :index, notice: 'リストを更新しました'
     # else
     #   render :edit
     # end
   end
 
   def update
-    if @group.update(group_params)
-    redirect_to group_messages_path(@group), notice: 'グループを更新しました'
+    @group = Group.find(params[:id])
+    if @group.update(group_name: params["group"][:group_name], hashtag: params["group"][:hashtag])
+      render :index, notice: 'リストを更新しました'
     else
       render :edit
     end
-  end
-
-  def search
   end
 
   private
