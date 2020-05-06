@@ -6,7 +6,8 @@ Rails.application.routes.draw do
   resources :groups
   get '/tweets', to: 'tweets#update'
   # resources :statuses, only: [:update]
-  resources :statuses
+  put '/statuses', to: 'statuses#update'
+  # resources :statuses
   # put '/statuses', to: 'statuses#update'
   get '/user', to: 'users#destroy'
   get "/tweets/search" => 'tweets#search'

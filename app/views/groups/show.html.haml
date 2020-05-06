@@ -1,96 +1,92 @@
 -# = javascript_pack_tag 'hello_vue'
 -# = javascript_pack_tag 'tweet_embed'
-= form_with model: @tweet, url: status_path, do |f|
 = render 'shared/header'
 %link{href: "https://fonts.googleapis.com/icon?family=Material+Icons", rel: "stylesheet"}/
-  -# = f.select :user_id, [['太郎', 1], ['二郎', 2]], { include_blank: true, selected: 1 }, { id: "user_id", class: "user_class" }
-  -# = f.select :status, [["---", ""], ["未定", value = 1],["らくらくメルカリ便", value = 2],["ゆうメール", value = 3]], class: ".browser-default"
-  = f.select :status, [["---", ""], ["未定", value = 1],["らくらくメルカリ便", value = 2],["ゆうメール", value = 3]], class: ".browser-default"
-  .row
-    .col.s12
-      %ul.tabs{style: " border-bottom: 1px dotted #bbb;"}
-        %li
-          .col.s2{style: "color: #ee6e73;"}
-            Name:
-            = @group.group_name
-            %br
-            Hashtag:
-            = @group.hashtag
-        %li.col.s2{style: "color: #ee6e73; padding-top: 0.5%; font-size: 16px;"}
-          %i.material-icons{style: "padding-top: 1%"} autorenew
-          = link_to 'Load new tweets', tweets_path(@group), method: :put , style: "color: #ee6e73;"
-        %li.tab.col.s2{style: " border-left: 1px dotted #bbb;"}
-          %a{href:"#test1"} New
-          -# = link_to 'New', statuses_path(tweet_id: t, status: "2"), method: :put , style: "color: #ee6e73;"
-        %li.tab.col.s2
-          %a.active{href: "#test2"} WIP
-        %li.tab.col.s2
-          %a{href: "#test3"} Pending
-        %li.tab.col.s2
-          %a{href: "#test4"} Completed
+
+.row
+  .col.s12
+    %ul.tabs{style: " border-bottom: 1px dotted #bbb;"}
+      %li
+        .col.s2{style: "color: #ee6e73;"}
+          Name:
+          = @group.group_name
+          %br
+          Hashtag:
+          = @group.hashtag
+      %li.col.s2{style: "color: #ee6e73; padding-top: 0.5%; font-size: 16px;"}
+        %i.material-icons{style: "padding-top: 1%"} autorenew
+        = link_to 'Load new tweets', tweets_path(@group) , style: "color: #ee6e73;"
+      %li.tab.col.s2{style: " border-left: 1px dotted #bbb;"}
+        %a{href:"#test1"} New
+        -# = link_to 'New', statuses_path(tweet_id: t, status: "2"), method: :put , style: "color: #ee6e73;"
+      %li.tab.col.s2
+        %a.active{href: "#test2"} WIP
+      %li.tab.col.s2
+        %a{href: "#test3"} Pending
+      %li.tab.col.s2
+        %a{href: "#test4"} Completed
     #test1.col.s12.tweet-container
       - @new.each do |tweet|
-        .card.white.darken-1.tweet-container__box
-          .card-content.white-text.tweet-container__box__tweet
-            %blockquote.twitter-tweet
-              %a{href: "https://twitter.com/a/status/#{tweet.tweet_id}?ref_src=twsrc%5Etfw"}
-            %script{async: "", charset: "utf-8", src: "https://platform.twitter.com/widgets.js"}
-            .card-action{style: "color: black;"}
-              = f.select :status, [["---", ""], ["未定", value = 1],["らくらくメルカリ便", value = 2],["ゆうメール", value = 3]], class: ".browser-default"
-              %select.browser-default
-                %option{disabled: "disabled", selected: "selected", value: ""} Move this card to:
-                %option{value: "1"} Option 1
-                %option{value: "2"} Option 2
-                %option{value: "3"} Option 3
-              %p
-                -# = link_to "WIP", statuses_path(tweet_id: tweet.tweet_id, status: "2"), method: :put, class: "waves-effect.waves-light.btn-small.grey"
-                -# = link_to "WIP", status_path(tweet_id: tweet.tweet_id, status: "2"), method: :put, class: "waves-effect.waves-light.btn-small.grey"
-                -# = link_to "Pending", root_path, class: "waves-effect.waves-light.btn-small.grey"
-                -# = link_to "Completed", root_path, class: "waves-effect.waves-light.btn-small.grey"
-              %a.waves-effect.waves-light.btn-small Submit
+        = form_with url: statuses_path, method: :put, local: true do |f|
+          .card.white.darken-1.tweet-container__box
+            .card-content.white-text.tweet-container__box__tweet
+              %blockquote.twitter-tweet
+                %a{href: "https://twitter.com/a/status/#{tweet.tweet_id}?ref_src=twsrc%5Etfw"}
+              %script{async: "", charset: "utf-8", src: "https://platform.twitter.com/widgets.js"}
+              .card-action{style: "color: black;"}
+                = f.select :status, [["Move this card to:", ""], ["WIP", value = 2],["PENDING", value = 3],["Completed", value = 4]], {}, {class: "browser-default"}
+                = f.hidden_field :tweet_id, value: tweet.tweet_id
+                %br
+                %button.waves-effect.waves-light.btn-small
+                  = f.submit "Submit"
 
     #test2.col.s12.tweet-container
       - @wip.each do |tweet|
-        .card.white.darken-1.tweet-container__box
-          .card-content.white-text.tweet-container__box__tweet
-            %blockquote.twitter-tweet
-              %a{href: "https://twitter.com/a/status/#{tweet.tweet_id}?ref_src=twsrc%5Etfw"}
-            %script{async: "", charset: "utf-8", src: "https://platform.twitter.com/widgets.js"}
-            .card-action{style: "color: black;"}
-              Move this card to:
-              %br
-              -# = link_to "WIP", root_path, class: "waves-effect.waves-light.btn-small.grey"
-              = link_to "Pending", root_path, class: "waves-effect.waves-light.btn-small.grey"
-              = link_to "Completed", root_path, class: "waves-effect.waves-light.btn-small.grey"
+        = form_with url: statuses_path, method: :put, local: true do |f|
+          .card.white.darken-1.tweet-container__box
+            .card-content.white-text.tweet-container__box__tweet
+              %blockquote.twitter-tweet
+                %a{href: "https://twitter.com/a/status/#{tweet.tweet_id}?ref_src=twsrc%5Etfw"}
+              %script{async: "", charset: "utf-8", src: "https://platform.twitter.com/widgets.js"}
+              .card-action{style: "color: black;"}
+                = f.select :status, [["Move this card to:", ""], ["PENDING", value = 3],["Completed", value = 4]], {}, {class: "browser-default"}
+                = f.hidden_field :tweet_id, value: tweet.tweet_id
+                %br
+                %button.waves-effect.waves-light.btn-small
+                  = f.submit "Submit"
 
     #test3.col.s12.tweet-container
       - @pending.each do |tweet|
-        .card.white.darken-1.tweet-container__box
-          .card-content.white-text.tweet-container__box__tweet
-            %blockquote.twitter-tweet
-              %a{href: "https://twitter.com/a/status/#{tweet.tweet_id}?ref_src=twsrc%5Etfw"}
-            %script{async: "", charset: "utf-8", src: "https://platform.twitter.com/widgets.js"}
-            .card-action{style: "color: black;"}
-              Move this card to:
-              %br
-              = link_to "WIP", root_path, class: "waves-effect.waves-light.btn-small.grey"
-              -# = link_to "Pending", root_path, class: "waves-effect.waves-light.btn-small.grey"
-              = link_to "Completed", root_path, class: "waves-effect.waves-light.btn-small.grey"
+        = form_with url: statuses_path, method: :put, local: true do |f|
+          .card.white.darken-1.tweet-container__box
+            .card-content.white-text.tweet-container__box__tweet
+              %blockquote.twitter-tweet
+                %a{href: "https://twitter.com/a/status/#{tweet.tweet_id}?ref_src=twsrc%5Etfw"}
+              %script{async: "", charset: "utf-8", src: "https://platform.twitter.com/widgets.js"}
+              .card-action{style: "color: black;"}
+                = f.select :status, [["Move this card to:", ""], ["WIP", value = 2],["Completed", value = 4]], {}, {class: "browser-default"}
+                = f.hidden_field :tweet_id, value: tweet.tweet_id
+                %br
+                %button.waves-effect.waves-light.btn-small
+                  = f.submit "Submit"
+
     #test4.col.s12.tweet-container
       - @completed.each do |tweet|
-        .card.white.darken-1.tweet-container__box
-          .card-content.white-text.tweet-container__box__tweet
-            %blockquote.twitter-tweet
-              %a{href: "https://twitter.com/a/status/#{tweet.tweet_id}?ref_src=twsrc%5Etfw"}
-            %script{async: "", charset: "utf-8", src: "https://platform.twitter.com/widgets.js"}
-            .card-action{style: "color: black;"}
-              Move this card to:
-              %br
-              -# = link_to "WIP", root_path, class: "waves-effect.waves-light.btn-small.grey"
-              -# = link_to "Pending", root_path, class: "waves-effect.waves-light.btn-small.grey"
-              -# = link_to "Completed", root_path, class: "waves-effect.waves-light.btn-small.grey"
-  :javascript
-    $(document).ready(function(){
-      $('.tabs').tabs();
-    });
+        = form_with url: statuses_path, method: :put, local: true do |f|
+          .card.white.darken-1.tweet-container__box
+            .card-content.white-text.tweet-container__box__tweet
+              %blockquote.twitter-tweet
+                %a{href: "https://twitter.com/a/status/#{tweet.tweet_id}?ref_src=twsrc%5Etfw"}
+              %script{async: "", charset: "utf-8", src: "https://platform.twitter.com/widgets.js"}
+              -# .card-action{style: "color: black;"}
+              -#   = f.select :status, [["Move this card to:", ""], ["WIP", value = 2],["PENDING", value = 3],["Completed", value = 3]], {}, {class: "browser-default"}
+              -#   = f.hidden_field :tweet_id, value: tweet.tweet_id
+              -#   %br
+              -#   %button.waves-effect.waves-light.btn-small
+              -#     = f.submit "Submit"
+
+:javascript
+  $(document).ready(function(){
+    $('.tabs').tabs();
+  });
 
