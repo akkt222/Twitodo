@@ -5,6 +5,10 @@ Rails.application.routes.draw do
   get '/logout', to: 'sessions#destroy'
   resources :groups
   get '/tweets', to: 'tweets#update'
+  # resources :statuses, only: [:update]
+  put '/statuses', to: 'statuses#update'
+  # resources :statuses
+  # put '/statuses', to: 'statuses#update'
   get '/user', to: 'users#destroy'
   get "/tweets/search" => 'tweets#search'
 end
