@@ -15,7 +15,7 @@ class TwitterApiSearchClient
   #     }
   def call(hashtag:)
     params =  {"query" => "#{hashtag} lang:ja",
-    "maxResults" => "10",}
+    "maxResults" => "100",}
     uri = URI.parse(TWITTER_SEARCH_ENDPOINT)
 
     request = Net::HTTP::Post.new(uri)
