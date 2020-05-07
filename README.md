@@ -14,7 +14,7 @@
 新しくリストを作成する場合は**リストの作成**を押します。
 ![image](https://user-images.githubusercontent.com/55902529/81285787-010a3c00-909b-11ea-8a95-1ad057b32ca5.png)
 
-「リストの作成」の画面です**「リストの名前**は何でも構いませんが、**ハッシュタグ**は**twitodotest**というハッシュタグでツイッター上にテストデータを作成しているため、動作確認のために利用される際はこちらを推奨します。
+**リストの作成**の画面です**リストの名前**は何でも構いませんが、**ハッシュタグ**は**twitodotest**というハッシュタグでツイッター上にテストデータを作成しているため、動作確認のために利用される際はこちらを推奨します。
 また**ユーザー(TwitterのID)**の欄は何も触らずに登録してください。現在開発中のため、＋ボタンを押してフォームを追加すると、Twitter APIにリクエストを送る際にエラーが発生します。
 ![image](https://user-images.githubusercontent.com/55902529/81286641-585cdc00-909c-11ea-8443-9c7b0a1c322c.png)
 
@@ -33,6 +33,6 @@
 
 進捗状況を変更したいツイートのセレクトボックスから変更するステータスを選択し、**SUBMIT**を押します。
 ![image](https://user-images.githubusercontent.com/55902529/81288380-80017380-909f-11ea-9c39-1dfc230f4fa3.png)
-
-今回は**WIP**を選択したため、ツイートが**WIP**のタグに移動しました。**WIP**からはPENDINGとCOMPLETEDに、**PENDING**からはWIPと**COMPLETED**にツイートを移動できます。**COMPLETED**からツイートを移動させることは出来ません。
+<br>
+今回は**WIP**を選択したため、ツイートが**WIP**のタグに移動しました。**WIP**からはPENDINGとCOMPLETEDに、**PENDING**からはWIPとCOMPLETEDにツイートを移動できます。COMPLETEDからツイートを移動させることは出来ません。
 ![image](https://user-images.githubusercontent.com/55902529/81288680-16359980-90a0-11ea-8840-1c70acc2be10.png)
