@@ -1,6 +1,14 @@
-### Twitodoとは
-Twitter APIとRuby on Railsを利用したToDo管理アプリです。
-url https://twitodo.herokuapp.com/
+<dl>
+  <dt>Twitodoとは</dt>
+  <dd>Twitter APIとRuby on Railsを利用したToDo管理アプリです。</dd>
+  <dt>url</dt>
+  <dd>https://twitodo.herokuapp.com/</dd>
+</dl>
+
+### 
+
+<br>
+ https://twitodo.herokuapp.com/
 
 ### 使い方
 ￼
