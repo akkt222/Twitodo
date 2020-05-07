@@ -16,5 +16,19 @@
 
 「SUBMIT」ボタンを押すことでリストが新規に作成され、「リストの一覧」画面に遷移します。
 「リストを編集・削除する」ボタンを押すことでリストに対して設定している名前とハッシュタグを変更する画面に遷移出来ます。
-「リストを見る」ボタンを押すと選択したリストに遷移します。以下では「リストを見る」ボタンを押した際の動作について説明します。
+
 ![image](https://user-images.githubusercontent.com/55902529/81286893-c903f880-909c-11ea-8283-843e9012ba5f.png)
+
+「リストの一覧」画面から「リストを見る」ボタンを押すと以下のように選択したリストに遷移します。
+この画面では左上に表示される「hashtag」が想定通りになっていることを確認し「Load new tweets」ボタンを押します。
+![image](https://user-images.githubusercontent.com/55902529/81287480-c9e95a00-909d-11ea-98c8-1aea5f1d6d1c.png)
+
+「Load new tweets」ボタンを押すと、Twitter APIにリクエストが送信され、以下のように該当するハッシュタグがついたツイートが表示されます。
+これらのツイートに対してTodo管理を行うことが出来ます。
+![image](https://user-images.githubusercontent.com/55902529/81288288-4fb9d500-909f-11ea-9fdc-2ef247c92c6b.png)
+
+進捗状況を変更したいツイートのセレクトボックスから変更するステータスを選択し、SUBMITボタンを押します。
+![image](https://user-images.githubusercontent.com/55902529/81288380-80017380-909f-11ea-9c39-1dfc230f4fa3.png)
+
+今回は「WIP」を選択したため、ツイートが「WIP」のタグに移動しました。「WIP」からは「PENDING」と「COMPLETED」に、「PENDING」からは「WIP」と「COMPLETED」にツイートを移動できます。「COMPLETED」からツイートを移動させることは出来ません。
+![image](https://user-images.githubusercontent.com/55902529/81288680-16359980-90a0-11ea-8840-1c70acc2be10.png)
