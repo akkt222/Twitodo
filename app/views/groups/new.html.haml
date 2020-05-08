@@ -6,64 +6,23 @@
       .row
         .input-field.col.s12
           = form.text_field :group_name, class:"materialize-textarea", placeholder: "リストの名前", maxlength: "20"
-          -# %textarea#textarea1.materialize-textarea{"data-length" => "120"}
           %label{for: "textarea1"} リストの名前
       .row
         .input-field.col.s12
           = form.text_field :hashtag, class:"materialize-textarea", placeholder: "ハッシュタグ", maxlength: "20"
-          -# %textarea#textarea1.materialize-textarea
           %label{for: "textarea1"} ハッシュタグ
     .divider
     .user-form-container
-    -# = form.fields_for :user_ids do |user|
-      -# = form.text_field :user_ids, class:"materialize-textarea", placeholder: "ユーザー(TwitterのID)", maxlength: "20"
-      -# = form.text_field :user_ids, class:"materialize-textarea", placeholder: "ユーザー(TwitterのID)", maxlength: "20"
     .row
       #image.input-field.col.s12.user-add-form
         %label{for: "textarea1"} ユーザー(TwitterのID)
         %br
         = form.hidden_field "user_ids[]", name: "group[user_ids][]", value: current_user.id
-        -# = form.text_field "user_ids[]", name: "group[user_ids][]", class:"materialize-textarea", placeholder: "ユーザー(TwitterのID)", maxlength: "20"
       %a.btn-floating.btn-small.waves-effect.waves-light.grey.user-add-btn ＋
-
-
-
-    -#     = form.hidden_field "user_ids[]", name: "user_ids[]", value: current_user.nickname
-    -#     = form.text_field "user_ids[]", name: "user_ids[]", class:"materialize-textarea", placeholder: "ユーザー(TwitterのID)", maxlength: "20"
-    -#     -# %textarea#textarea1.materialize-textarea
-    -#     %label{for: "textarea1"} ユーザー(TwitterのID)
-
-    -#   .input-field.col.s12
-    -#     = form.text_field "user_ids[]", name: "user_ids[]", class:"materialize-textarea", placeholder: "ユーザー(TwitterのID)", maxlength: "20"
-    -#     -# %textarea#textarea1.materialize-textarea
-    -#     %label{for: "textarea1"} ユーザー(TwitterのID)
-
-    -#   .input-field.col.s12
-    -#     = form.text_field "user_ids[]", name: "user_ids[]", class:"materialize-textarea", placeholder: "ユーザー(TwitterのID)", maxlength: "20"
-    -#     -# %textarea#textarea1.materialize-textarea
-    -#     %label{for: "textarea1"} ユーザー(TwitterのID)
-
-    -#   .input-field.col.s12
-    -#     = form.text_field "user_ids[]", name: "user_ids[]", class:"materialize-textarea", placeholder: "ユーザー(TwitterのID)", maxlength: "20"
-    -#     -# %textarea#textarea1.materialize-textarea
-    -#     %label{for: "textarea1"} ユーザー(TwitterのID)
-    -#   -# = form.collection  c_check_boxes :user_ids, User.all, :id, :name, class: "filled-in"
-        
-    -# -# -#     = user.hidden_field :user_id, value: current_user.id
-    -#   -# = form.hidden_field "user_ids[]", name: "user_ids[]", value: current_user.nickname
     .divider
-
     .button-container
-      -# = f.su :hashtag, class:"waves-effect.waves-light.btn-large"
       %button.waves-effect.waves-light.btn-large
         = form.submit "Submit"
-      -#   Submit
-    -#   -# , "Submit", class:"waves-effect.waves-light.btn-large.submit"
-      -# = f.submit
-
-    -# %button.btn.waves-effect.waves-light{name: "action", type: "submit"}
-    -#   Submit
-    -#   %i.material-icons.right send
 
 :javascript
   $(window).on('load', ()=> {

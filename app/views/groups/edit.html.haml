@@ -12,29 +12,6 @@
           = form.text_field :hashtag, class:"materialize-textarea", placeholder: @group.hashtag, maxlength: "20"
           %label{for: "textarea1"} ハッシュタグ
     .divider
-    -# .user-form-container
-
-    -# .row
-    -#   #image.input-field.col.s12.user-add-form
-    -#     %label{for: "textarea1"} ユーザー(TwitterのID)
-    -#     %br
-    -#     = form.hidden_field "user_ids[]", name: "group[user_ids][]", value: current_user.id
-    -#   %a.btn-floating.btn-small.waves-effect.waves-light.grey.user-add-btn ＋
-
-    -# .divider
-
     .button-container
-      -# = f.su :hashtag, class:"waves-effect.waves-light.btn-large"
       %button.waves-effect.waves-light.btn-large
         = form.submit "Submit"
-
--# :javascript
--#   $(window).on('load', ()=> {
--#     const html = `
--#       <input name="group[user_ids][]" class="materialize-textarea" placeholder="ユーザー(TwitterのID)" maxlength="20" size="20" type="text" id="group_user_ids[]">
--#     `;
--#     $('.user-add-btn').on('click', function(e) {
--#       $('.user-add-form').append(html);
--#     });
-
--#   });
