@@ -27,6 +27,7 @@
 ![image](https://user-images.githubusercontent.com/55902529/81287480-c9e95a00-909d-11ea-98c8-1aea5f1d6d1c.png)
 
 **Load new tweets**ボタンを押すと、Twitter APIにリクエストが送信され、以下のように該当するハッシュタグがついたツイートが表示されます。
+二回目以降の実行では前回からの差分を取得出来ます。
 これらのツイートに対してTodo管理を行うことが出来ます。
 ![image](https://user-images.githubusercontent.com/55902529/81288288-4fb9d500-909f-11ea-9fdc-2ef247c92c6b.png)
 <br>
@@ -39,7 +40,7 @@
 ### 使用技術
 - Rails 6.0.2.2
 - Ruby 2.6.3
-- Materilize
+- Materialize
 - JavaScript
 - jQuery 3.3.1
 - Twitter API
