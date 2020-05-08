@@ -17,28 +17,13 @@ class GroupsController < ApplicationController
     else
       render :new
     end
-    # @group = Group.new(group_params)
-    # if @group.save
-    #   redirect_to root_path, notice: 'グループを作成しました'
-    # else
-    #   render :new
-    # end
+
     # group = Group.create!(group_params)
     # group.user_ids.each do |user_id|
     #   user = User.find_by(user_id: user_id)
     #   group.members.create!(user: user)
-
-    # @group = Group.new(group_params)
-
-    # if @group.save
-    #   binding.pry
-    # group = Group.create!(group_params)
-    # group.user_ids.each do |user_id|
-    #   user = User.find_by(user_id: user_id)
-    #   group.members.create!(user: user)
-
-    # render :index
     # end
+
   end
 
   def show
@@ -50,11 +35,6 @@ class GroupsController < ApplicationController
   end
 
   def edit
-    # if @group.update(group_name: params[:name], id: params[:id])
-    #   redirect_to :index, notice: 'リストを更新しました'
-    # else
-    #   render :edit
-    # end
   end
 
   def update
