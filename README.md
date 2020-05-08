@@ -27,7 +27,9 @@
 ![image](https://user-images.githubusercontent.com/55902529/81287480-c9e95a00-909d-11ea-98c8-1aea5f1d6d1c.png)
 
 **Load new tweets**ボタンを押すと、Twitter APIにリクエストが送信され、以下のように該当するハッシュタグがついたツイートが表示されます。
+<br>
 二回目以降の実行では前回からの差分を取得出来ます。
+<br>
 これらのツイートに対してTodo管理を行うことが出来ます。
 ![image](https://user-images.githubusercontent.com/55902529/81288288-4fb9d500-909f-11ea-9fdc-2ef247c92c6b.png)
 <br>
