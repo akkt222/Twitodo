@@ -1,10 +1,9 @@
-%ul#dropdown1.dropdown-content
+%ul#dropdown-menu.dropdown-content
   %li
     %a{href: "#!"}  ユーザー情報
   %li.divider
   %li
-    -# = link_to "退会", twitodo_path(current_user.id), data: { confirm: '削除しますか？' }
-    = link_to '退会', user_path, method: :delete, data: {confirm: '本当にいいんですか？'}
+    = link_to '退会', user_path, method: :delete, data: { confirm: "退会しますか？" }
 %nav
   .nav-wrapper
     %a.brand-logo{href: "#!"}
@@ -23,7 +22,7 @@
           -# - else
           -#   %a{href: "/auth/twitter"} ログイン
         %li
-          %a.dropdown-trigger{"data-target" => "dropdown1", href: "#!"}
+          %a.dropdown-trigger{"data-target" => "dropdown-menu", href: "#!"}
             メニュー
             -# %i.material-icons.right arrow_drop_down
     - else

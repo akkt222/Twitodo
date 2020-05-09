@@ -15,14 +15,14 @@
         %i.material-icons{style: "padding-top: 1%"} autorenew
         = link_to 'Load new tweets', tweets_path(@group) , style: "color: #ee6e73;"
       %li.tab.col.s2{style: " border-left: 1px dotted #bbb;"}
-        %a.active{href:"#test1"} New
+        %a.active{href:"#new"} New
       %li.tab.col.s2
-        %a.active{href: "#test2"} WIP
+        %a.active{href: "#wip"} WIP
       %li.tab.col.s2
-        %a{href: "#test3"} Pending
+        %a{href: "#pending"} Pending
       %li.tab.col.s2
-        %a{href: "#test4"} Completed
-    #test1.col.s12.tweet-container
+        %a{href: "#completed"} Completed
+    #new.col.s12.tweet-container
       - @new.each do |tweet|
         = form_with url: statuses_path, method: :put, local: true do |f|
           .card.white.darken-1.tweet-container__box
@@ -37,7 +37,7 @@
                 %button.waves-effect.waves-light.btn-small
                   = f.submit "Submit"
 
-    #test2.col.s12.tweet-container
+    #wip.col.s12.tweet-container
       - @wip.each do |tweet|
         = form_with url: statuses_path, method: :put, local: true do |f|
           .card.white.darken-1.tweet-container__box
@@ -52,7 +52,7 @@
                 %button.waves-effect.waves-light.btn-small
                   = f.submit "Submit"
 
-    #test3.col.s12.tweet-container
+    #pending.col.s12.tweet-container
       - @pending.each do |tweet|
         = form_with url: statuses_path, method: :put, local: true do |f|
           .card.white.darken-1.tweet-container__box
@@ -67,7 +67,7 @@
                 %button.waves-effect.waves-light.btn-small
                   = f.submit "Submit"
 
-    #test4.col.s12.tweet-container
+    #completed.col.s12.tweet-container
       - @completed.each do |tweet|
         = form_with url: statuses_path, method: :put, local: true do |f|
           .card.white.darken-1.tweet-container__box
